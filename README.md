@@ -15,4 +15,4 @@ Package and run remotely:
   java -jar mengua-0.0.1-SNAPSHOT.jar
   
 Run server locally:
-  mvn jetty:run
+  mvn exec:java
