@@ -28,5 +28,7 @@ public class MenguaServer extends AbstractHandler
   
         server.start();
         server.join();
+        
+        
     }
 }
