@@ -11,8 +11,8 @@ public class User {
 		
 	}
 	
-	public User(long id) {
-		this.name = "test";
+	public User(long id, String name) {
+		this.name = name;
 		this.id = id;
 	}
 	public String getName() {
