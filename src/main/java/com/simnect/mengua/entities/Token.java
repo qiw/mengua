@@ -8,20 +8,24 @@ package com.simnect.mengua.entities;
  *
  */
 public class Token {
-	private long user_id;
+	private long userId;
+	
+	public Token() {
+	}
+	
 	private long id;
 	private String context;
-	public Token(long user_id, long id, String context) {
+	public Token(long userId, long id, String context) {
 		super();
-		this.user_id = user_id;
+		this.userId = userId;
 		this.id = id;
 		this.context = context;
 	}
-	public long getUser_id() {
-		return user_id;
+	public long getUserId() {
+		return userId;
 	}
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public long getId() {
 		return id;
@@ -37,7 +41,7 @@ public class Token {
 	}
 	@Override
 	public String toString() {
-		return "Token [user_id=" + user_id + ", id=" + id + ", context="
+		return "Token [user_id=" + userId + ", id=" + id + ", context="
 				+ context + "]";
 	}
 	

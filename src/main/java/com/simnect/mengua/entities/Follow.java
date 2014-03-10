@@ -9,29 +9,38 @@ package com.simnect.mengua.entities;
  */
 public class Follow {
 
-	private long follower_id;
-	private long followee_id;
-	public Follow(long follower_id, long followee_id) {
+	private long followerId;
+	private long followeeId;
+	public Follow() {
+	}
+	
+	public Follow(long followerId, long followeeId) {
 		super();
-		this.follower_id = follower_id;
-		this.followee_id = followee_id;
+		this.followerId = followerId;
+		this.followeeId = followeeId;
 	}
-	public long getFollower_id() {
-		return follower_id;
+
+	
+	public long getFollowerId() {
+		return followerId;
 	}
-	public void setFollower_id(long follower_id) {
-		this.follower_id = follower_id;
+
+	public void setFollowerId(long followerId) {
+		this.followerId = followerId;
 	}
-	public long getFollowee_id() {
-		return followee_id;
+
+	public long getFolloweeId() {
+		return followeeId;
 	}
-	public void setFollowee_id(long followee_id) {
-		this.followee_id = followee_id;
+
+	public void setFolloweeId(long followeeId) {
+		this.followeeId = followeeId;
 	}
+
 	@Override
 	public String toString() {
-		return "Follow [follower_id=" + follower_id + ", followee_id="
-				+ followee_id + "]";
+		return "Follow [follower_id=" + followerId + ", followee_id="
+				+ followeeId + "]";
 	}
 	
 }

@@ -8,27 +8,37 @@ package com.simnect.mengua.entities;
  *
  */
 public class Like {
-	private long user_id;
-	private long game_id;
-	public Like(long user_id, long game_id) {
-		this.user_id = user_id;
-		this.game_id = game_id;
+	private long userId;
+	private long gameId;
+	
+	public Like() {
 	}
-	public long getUser_id() {
-		return user_id;
+	
+	public Like(long userId, long gameId) {
+		this.userId = userId;
+		this.gameId = gameId;
 	}
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	
+	
+	public long getUserId() {
+		return userId;
 	}
-	public long getGame_id() {
-		return game_id;
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
-	public void setGame_id(long game_id) {
-		this.game_id = game_id;
+
+	public long getGameId() {
+		return gameId;
 	}
+
+	public void setGameId(long gameId) {
+		this.gameId = gameId;
+	}
+
 	@Override
 	public String toString() {
-		return "Like [user_id=" + user_id + ", game_id=" + game_id + "]";
+		return "Like [user_id=" + userId + ", game_id=" + gameId + "]";
 	}
 	
 	

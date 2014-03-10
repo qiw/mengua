@@ -15,20 +15,24 @@ import java.util.Date;
 public class Snippet {
 	 private long id;
 	 private String author;
-	 private Date creat_at;
+	 private Date creatAt;
 	 private String lang;
 	 private String place;
 	 private double geo;
-	 private String media_url;
-	 private long media_id;
-	 private long in_reply_to_id;
+	 private String mediaUrl;
+	 private long mediaId;
+	 private long inReplyToId;
 	 private Object post;
 	 
-	public Snippet(long id, String author, Date creat_at) {
+	public Snippet() {
+		
+	}
+
+	public Snippet(long id, String author, Date creatAt) {
 		super();
 		this.id = id;
 		this.author = author;
-		this.creat_at = creat_at;
+		this.creatAt = creatAt;
 	}
 
 	public long getId() {
@@ -47,12 +51,12 @@ public class Snippet {
 		this.author = author;
 	}
 
-	public Date getCreat_at() {
-		return creat_at;
+	public Date getCreatAt() {
+		return creatAt;
 	}
 
-	public void setCreat_at(Date creat_at) {
-		this.creat_at = creat_at;
+	public void setCreatAt(Date creatAt) {
+		this.creatAt = creatAt;
 	}
 
 	public String getLang() {
@@ -79,28 +83,28 @@ public class Snippet {
 		this.geo = geo;
 	}
 
-	public String getMedia_url() {
-		return media_url;
+	public String getMediaUrl() {
+		return mediaUrl;
 	}
 
-	public void setMedia_url(String media_url) {
-		this.media_url = media_url;
+	public void setMediaUrl(String mediaUrl) {
+		this.mediaUrl = mediaUrl;
 	}
 
-	public long getMedia_id() {
-		return media_id;
+	public long getMediaId() {
+		return mediaId;
 	}
 
-	public void setMedia_id(long media_id) {
-		this.media_id = media_id;
+	public void setMediaId(long mediaId) {
+		this.mediaId = mediaId;
 	}
 
-	public long getIn_reply_to_id() {
-		return in_reply_to_id;
+	public long getInReplyToId() {
+		return inReplyToId;
 	}
 
-	public void setIn_reply_to_id(long in_reply_to_id) {
-		this.in_reply_to_id = in_reply_to_id;
+	public void setInReplyToId(long inReplyToId) {
+		this.inReplyToId = inReplyToId;
 	}
 
 	public Object getPost() {
@@ -114,9 +118,9 @@ public class Snippet {
 	@Override
 	public String toString() {
 		return "Snippet [id=" + id + ", author=" + author + ", creat_at="
-				+ creat_at + ", lang=" + lang + ", place=" + place + ", geo="
-				+ geo + ", media_url=" + media_url + ", media_id=" + media_id
-				+ ", in_reply_to_id=" + in_reply_to_id + ", post=" + post + "]";
+				+ creatAt + ", lang=" + lang + ", place=" + place + ", geo="
+				+ geo + ", media_url=" + mediaUrl + ", media_id=" + mediaId
+				+ ", in_reply_to_id=" + inReplyToId + ", post=" + post + "]";
 	}
 	 
 	 

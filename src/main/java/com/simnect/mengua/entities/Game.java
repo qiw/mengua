@@ -9,8 +9,11 @@ package com.simnect.mengua.entities;
  */
 public class Game {
 
+	public Game() {
+	}
+	
 	public Game(long id, String name) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 	}
