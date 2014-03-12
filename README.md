@@ -16,3 +16,10 @@ Package and run remotely:
   
 Run server locally:
   mvn exec:java
+
+Set up databse:
+  mysql -uroot
+  create user mengua_dev@localhost identified by "admin";
+  grant all privileges on *.* to mengua_dev@locahost;
+  drop database menguadb;
+  create database menguadb;
