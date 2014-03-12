@@ -23,13 +23,13 @@ public class UserSvc {
 	@Path("/{id}")
 	public User getUser(@PathParam("id") long id) {
 		LOG.info("Got id " + id);
-		User u = new User(id, "aass");
+		User u = new User();
 		return u;
 	}
 	
 	@POST
 	public void createUser(User u) {
-		LOG.info("post name" + u.getId() + "___" + u.getName());
+		LOG.info("post name" + u.getId() + "___");
 	}
 	
 }
