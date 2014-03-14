@@ -14,6 +14,12 @@
 -- 
 -- ---
 
+DROP TABLE IF EXISTS `media`;
+DROP TABLE IF EXISTS `like`;
+DROP TABLE IF EXISTS `snippet`;
+DROP TABLE IF EXISTS `user_game`;
+DROP TABLE IF EXISTS `game`;
+DROP TABLE IF EXISTS `token`;
 DROP TABLE IF EXISTS `user`;
     
 CREATE TABLE `user` (
@@ -32,8 +38,7 @@ CREATE TABLE `user` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `game`;
-    
+
 CREATE TABLE `game` (
   `game_id` BIGINT NOT NULL AUTO_INCREMENT,
   `desc` MEDIUMTEXT NULL DEFAULT NULL,
@@ -47,7 +52,6 @@ CREATE TABLE `game` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `user_game`;
     
 CREATE TABLE `user_game` (
   `user_game_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -63,7 +67,6 @@ CREATE TABLE `user_game` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `snippet`;
     
 CREATE TABLE `snippet` (
   `snippet_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -84,12 +87,11 @@ CREATE TABLE `snippet` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `like`;
-    
 CREATE TABLE `like` (
   `like_id` BIGINT NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT NOT NULL,
-  `snippet_id` BIGINT NOT NULL,
+  `target_id` BIGINT NOT NULL,
+  `type` VARCHAR(128) NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`like_id`)
@@ -100,7 +102,6 @@ CREATE TABLE `like` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `token`;
     
 CREATE TABLE `token` (
   `token_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -116,23 +117,22 @@ CREATE TABLE `token` (
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `follow`;
-    
-CREATE TABLE `follow` (
-  `follow_id` BIGINT NOT NULL,
-  `follower_id` BIGINT NOT NULL,
-  `followee_id` BIGINT NOT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`follow_id`)
-);
+-- DROP TABLE IF EXISTS `follow`;
+--    
+-- CREATE TABLE `follow` (
+--  `follow_id` BIGINT NOT NULL,
+--  `follower_id` BIGINT NOT NULL,
+--  `followee_id` BIGINT NOT NULL,
+--  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+--  PRIMARY KEY (`follow_id`)
+-- );
 
 -- ---
 -- Table 'media'
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `media`;
     
 CREATE TABLE `media` (
   `media_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -152,10 +152,9 @@ ALTER TABLE `user_game` ADD FOREIGN KEY (game_id) REFERENCES `game` (`game_id`);
 ALTER TABLE `snippet` ADD FOREIGN KEY (user_id) REFERENCES `user` (`user_id`);
 ALTER TABLE `snippet` ADD FOREIGN KEY (in_reply_to_id) REFERENCES `snippet` (`snippet_id`);
 ALTER TABLE `like` ADD FOREIGN KEY (user_id) REFERENCES `user` (`user_id`);
-ALTER TABLE `like` ADD FOREIGN KEY (snippet_id) REFERENCES `snippet` (`snippet_id`);
 ALTER TABLE `token` ADD FOREIGN KEY (user_id) REFERENCES `user` (`user_id`);
-ALTER TABLE `follow` ADD FOREIGN KEY (follower_id) REFERENCES `user` (`user_id`);
-ALTER TABLE `follow` ADD FOREIGN KEY (followee_id) REFERENCES `user` (`user_id`);
+-- ALTER TABLE `follow` ADD FOREIGN KEY (follower_id) REFERENCES `user` (`user_id`);
+-- ALTER TABLE `follow` ADD FOREIGN KEY (followee_id) REFERENCES `user` (`user_id`);
 ALTER TABLE `media` ADD FOREIGN KEY (snippet_id) REFERENCES `snippet` (`snippet_id`);
 
 -- ---

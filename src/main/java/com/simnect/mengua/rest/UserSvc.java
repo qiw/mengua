@@ -29,7 +29,7 @@ public class UserSvc {
 	
 	@POST
 	public void createUser(User u) {
-		LOG.info("post name" + u.getId() + "___");
+		LOG.info("post name" + u.getDisplayName() + "___");
 	}
 	
 }
