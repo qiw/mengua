@@ -1,10 +1,11 @@
 package com.simnect.mengua.entities;
 
-// Generated Mar 13, 2014 9:52:52 PM by Hibernate Tools 4.0.0
+// Generated Mar 13, 2014 11:06:35 PM by Hibernate Tools 4.0.0
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

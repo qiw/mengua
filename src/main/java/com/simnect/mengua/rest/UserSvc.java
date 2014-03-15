@@ -11,7 +11,15 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
 
+import com.simnect.mengua.common.DAOUtils;
 import com.simnect.mengua.entities.User;
+
+//Sample code using Entity Manager:
+//EntityManagerFactory factory = Persistence.createEntityManagerFactory("menguajpa");
+//EntityManager mgr = factory.createEntityManager();
+//mgr.getTransaction().begin();
+//mgr.persist(u);
+//mgr.getTransaction().commit();
 
 @Path("/user")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -22,14 +30,14 @@ public class UserSvc {
 	@GET
 	@Path("/{id}")
 	public User getUser(@PathParam("id") long id) {
-		LOG.info("Got id " + id);
-		User u = new User();
-		return u;
+	  LOG.info("Get user by id: " + id);
+	  User u =(User)DAOUtils.findById(User.class, id);
+	  return u;
 	}
 	
 	@POST
 	public void createUser(User u) {
-		LOG.info("post name" + u.getDisplayName() + "___");
+	  DAOUtils.insert(u);
 	}
 	
 }
