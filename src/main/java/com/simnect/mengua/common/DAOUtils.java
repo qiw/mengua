@@ -1,5 +1,6 @@
 package com.simnect.mengua.common;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -37,11 +38,19 @@ public class DAOUtils {
 	}
 
 	private static void saveInternal(MenguaEntity me) {
-		Session session = openSession();
-		session.beginTransaction();
-		session.save(me);
-		session.getTransaction().commit();
-		session.close();
+		Session session = null;
+		try {
+		  session = openSession();
+  		session.beginTransaction();
+  		session.save(me);
+  		session.getTransaction().commit();
+		} catch (Throwable e) {
+      throw e;
+    } finally {
+		  if (session != null) {
+		    session.close();
+		  }
+		}
 	}
 
 	public static void update(MenguaEntity me) {
@@ -51,6 +60,7 @@ public class DAOUtils {
 	}
 
 	public static void delete(MenguaEntity me) {
+	  // TODO: try finally
 		Session session = openSession();
 		session.beginTransaction();
 		session.delete(me);
@@ -59,11 +69,23 @@ public class DAOUtils {
 	}
 	
 	public static Object findById(Class<? extends MenguaEntity> classz, long id) {
-	  Session session = openSession();
-	  return session.load(classz, id);
+	  Session session = null; 
+	  try {
+	    session = openSession();
+	    Object o = session.load(classz, id);
+	    Hibernate.initialize(o);
+	    return o;
+	  } catch (Throwable e) {
+	    throw e;
+	  } finally {
+	    if (session != null) {
+	      session.close();
+	    }
+	  }
 	}
 
 	public static void close() {
 		sessionFactory.close();
 	}
+	
 }
